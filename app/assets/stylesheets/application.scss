@@ -1,0 +1,18 @@
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+#searchDiv{
+	margin-top: 10px;
+}
+
+.searchResults{
+	height: 280px;
+	width: 80%;
+	border: 1px solid hsl(0%,0%,10%);
+	margin: 0 auto;
+	margin-top: 10px;
+	overflow-y: scroll;
+	text-align: center;
+}
