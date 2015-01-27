@@ -386,7 +386,7 @@
     this.rootGroup = this.canvas.createGroup(true);
 
     this.index = WorldMap.mapIndex;
-    this.label = jQuery('<div/>').addClass('jqvmap-label').appendTo(jQuery('body')).hide();
+    this.label = jQuery('<div/>').addClass('jqvmap-label').attr('id', 'tooltip').appendTo($('body')).hide();
 
     if (params.enableZoom) {
       jQuery('<div/>').addClass('jqvmap-zoomin').text('+').appendTo(params.container);
@@ -616,6 +616,11 @@
         path.currentFillColor = path.getFill() + '';
         path.setFill(this.hoverColor);
       }
+
+
+
+
+
     },
 
     unhighlight: function (cc, path) {
@@ -1097,11 +1102,10 @@ jQuery.fn.vectorMap('addMap', 'world_en', {"width":950,"height":550,"pathes":{"i
 
 
 
+//change Map styling: 12345
 
 
-
-jQuery('#vmap').vectorMap(
-{
+jQuery('#vmap').vectorMap({
     map: 'world_en',
     backgroundColor: '#a5bfdd',
     borderColor: '#818181',
@@ -1109,19 +1113,21 @@ jQuery('#vmap').vectorMap(
     borderWidth: 1,
     color: '#f4f3f0',
     enableZoom: true,
-    hoverColor: '#c9dfaf',
+    hoverColor: '#339933',
     hoverOpacity: null,
     normalizeFunction: 'linear',
     scaleColors: ['#b6d6ff', '#005ace'],
     selectedColor: '#c9dfaf',
-    selectedRegion: null,
+    selectedRegion: true,
     showTooltip: true,
-    onRegionClick: function(element, code, region)
-    {
+    onRegionClick: function(element, code, region){
 
-        var countryCode = code;
+        countryCode = code;
 
-        var loadMovies = function() {
+        $('#selectedCountryDiv').text(region);
+
+
+        var loadVideos = function() {
             $('#youtubeSearchResults').empty();
 
 
@@ -1140,13 +1146,16 @@ jQuery('#vmap').vectorMap(
                     var vidId= noTag[noTag.length - 1];
                     var number= i+1;
                     console.log(vidId);
-                  $('#youtubeSearchResults').append($('<li></li>').html(number + '<iframe title="YouTube video player" src="http://www.youtube.com/embed/' + vidId + '" width="480" height="390" frameborder="0"></iframe>'));
+                  $('#youtubeSearchResults').append($('<li></li>').html(number + '<iframe title="YouTube video player" src="http://www.youtube.com/embed/' + vidId + '" width="430" height="305" frameborder="0" allowfullscreen="1"></iframe>'));
                   };
             });
         }
 
 
         var loadSongs = function() {
+
+        $('#iTunesSearchResults').empty();
+
          var apiURL ="https://itunes.apple.com/" + countryCode + "/rss/topsongs/limit=15/json";
             $.getJSON(apiURL, function(data) {
              // console.log(data)
@@ -1168,19 +1177,65 @@ jQuery('#vmap').vectorMap(
                    $('#iTunesSearchResults').append($('<li></li>').html("<img src=" + imgUrl + ">" + 
                      '<audio controls="" autostart="0" name="media"><source src="' + preview +'" type="audio/mp4"></audio>' + "<br>" + "<strong>" + titleAndArtist + "</strong>   " + "<br>" + album + "&nbsp&nbsp ~ &nbsp&nbsp" + genre ));
                  }
+            });
+        }
 
+        var loadMovies = function() {
+            $('#boxOfficeSearchResults').empty();
+
+            var apiURL = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=vysykc6wsckuvxfmdh82wmqr&country=" + countryCode;
+
+          $.ajax({
+                 dataType: "jsonp",
+                 url:  apiURL,   
+                 success: function(response){
+                  var movies = response.movies
+                  console.log(movies);
+                  for (i=0; i<10; i++){
+                    var title= movies[i].title;
+                    var actors= []
+                      for (j=0; j<5; j++){
+                        actors.push(movies[i].abridged_cast[j].name)
+                      };
+                    var released = movies[i].release_dates.theater;
+                    var runtime= movies[i].runtime;
+                    var synopsis= movies[i].synopsis;
+                    var imageUrl = movies[i].posters.original;
+                    var link = movies[i].links.alternate;
+                    var audience= movies[i].audience_score;
+                    var critics= movies[i].critics_score;
+                    console.log(title);
+                    $('#boxOfficeSearchResults').append($('<li></li>').html("<img src=" + imageUrl + ">" + title + "<br>" + actors[0] + "&nbsp" + actors[1] + "&nbsp" + actors[2] + "&nbsp"  + actors[3] + "&nbsp"  + actors[4] + "<br>runtime:" + runtime + synopsis + audience + critics));
+                  }
+                }
             });
         }
 
 
-        if ($('#youtubeTab').attr('class') == 'active'){
-            loadMovies();
+
+        if ($('#youtubeTab').hasClass('active')){
+            loadVideos();
         }
 
 
-        if ($('#iTunesTab').attr('class') == 'active'){
+        if ($('#iTunesTab').hasClass('active')){
             loadSongs();
         }
 
+        if ($('#boxOfficeTab').hasClass('active')){
+            loadMovies();
+        }
     }
 });
+
+// jQuery('#vmap').vectorMap(
+// {
+//     onRegionClick: function(event, code)
+//     {
+//         console.log(this);
+//         $(this).attr('background-color', "green")
+//     },
+// });
+
+
+// 
