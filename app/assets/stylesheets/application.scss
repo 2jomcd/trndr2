@@ -15,10 +15,10 @@
 .searchResults{
 	height: 312px;
 /*	width: 100%;*/
-	border-top: 1px solid hsl(0%,0%,15%);
-	border-bottom: 1px solid hsl(0%,0%,15%);
-	border-left: 10px solid hsl(0%,0%,15%);
-	border-right: 10px solid hsl(0%,0%,15%);
+	border-top: 1px solid hsl(0,0%,15%);
+	border-bottom: 1px solid hsl(0,0%,15%);
+	border-left: 10px solid hsl(0,0%,15%);
+	border-right: 10px solid hsl(0,0%,15%);
 
 /*	margin-top: 10px;*/
 	overflow-y: scroll;
@@ -37,19 +37,19 @@
 }
 #vmap{
 	width: 98%;
-	border-left: 10px solid hsl(0%,0%,15%);
-	border-right: 10px solid hsl(0%,0%,15%);
-	border-top: 1px solid hsl(0%,0%,15%);
-	border-bottom: 1px solid hsl(0%,0%,15%);
+	border-left: 10px solid hsl(0,0%,15%);
+	border-right: 10px solid hsl(0,0%,15%);
+	border-top: 1px solid hsl(0,0%,15%);
+	border-bottom: 1px solid hsl(0,0%,15%);
 /*	background-color: hsla(204, 75%, 82%, 0.87);*/
 }
 
 .pills{
-	background-color: hsl(0%,0%,15%);
+	background-color: hsl(0,0%,15%);
 }
 
 .pills a{
-	color: white;
+	color: purple;
 }
 
 #selectedCountryDiv{
