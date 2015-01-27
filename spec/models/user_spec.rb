@@ -8,8 +8,8 @@ RSpec.describe User, :type => :model do
 	end
 
   describe 'Database' do
-  	it { is_expected.to have_db_column :email}
-  	it { is_expected.to have_db_column :password}
+  	it { is_expected.to have_db_column (:email)}
+  	it { is_expected.to have_db_column (:encrypted_password)}
   end
 
   describe 'Validations' do
