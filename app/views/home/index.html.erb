@@ -5,113 +5,104 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true, :defer => "defer" %>
 
-<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
-  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+  	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+  	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 	
 </head>
 <body>
 
 <!-- Begin Navbar -->
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">Trendr</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <% if user_signed_in? %>
-        	<li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
-  			<li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
-		<% else %>
-  			<li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %></li>
-  			<li><%= link_to "Login", new_user_session_path, :class => 'navbar-link' %></li>
-		<% end %>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		    </button>
+		</div>
+    	<!-- Collect the nav links, forms, and other content for toggling -->
+    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      		<ul class="nav navbar-nav navbar-right">
+      			<% if user_signed_in? %>
+      				<li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
+  					<li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
+				<% else %>
+  					<li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %></li>
+  					<li><%= link_to "Login", new_user_session_path, :class => 'navbar-link' %></li>
+				<% end %>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+  	</div><!-- /.container-fluid -->
 </nav>
 <!-- End Navbar -->
 
 
-<div id="vmap" style="width: 96.9%; height: 400px; border-radius: 10px; margin: 0 auto; margin-top: 15px"><div id="logo">Trendr</div><div id="selectedCountryDiv">Select a country</div></div>
+<div id="vmap" style="width: 96.9%; height: 400px; border-radius: 10px; margin: 0 auto; margin-top: 15px">
+	<div id="logo">Trendr</div>
+
+	<div id="selectedCountryDiv">Select a country</div>
+</div>
 
 <div id="searchDiv">
 
         <div class="">
             <ul id="myTab" class="nav nav-pills nav-stacked col-sm-2">
-              <li id="youtubeTab" class="active pills"><a href="#youtube" data-toggle="tab">Youtube</a></li>
-              <li id="iTunesTab" class="pills"><a href="#iTunes" data-toggle="tab">iTunes</a></li>
-              <li id="googleTab" class="pills"><a href="#google" data-toggle="tab">Google</a></li>
-              <li id="twitterTab" class="pills"><a href="#twitter" data-toggle="tab">Twitter</a></li>
-              <li id="instagramTab" class="pills"><a href="#instagram" data-toggle="tab">Instagram</a></li>
-              <li id="boxOfficeTab" class="pills"><a href="#boxOffice" data-toggle="tab">Box Office</a></li>
-               <li id="favorites" class="pills"><a href="#favorites" data-toggle="tab">Favorites</a></li>
+	            <li id="youtubeTab" class="active pills"><a href="#youtube" data-toggle="tab">Youtube</a></li>
+	            <li id="iTunesTab" class="pills"><a href="#iTunes" data-toggle="tab">iTunes</a></li>
+	            <li id="googleTab" class="pills"><a href="#google" data-toggle="tab">Google</a></li>
+	            <li id="twitterTab" class="pills"><a href="#twitter" data-toggle="tab">Twitter</a></li>
+	            <li id="boxOfficeTab" class="pills"><a href="#boxOffice" data-toggle="tab">Rotten Tomatos Box Office</a></li>
+	            <li id="favorites" class="pills"><a href="#favorites" data-toggle="tab">Favorites</a></li>
             </ul>
 
-	          <div id="myTabContent" class="tab-content col-sm-10">
+	        <div id="myTabContent" class="tab-content col-sm-10">
 
-	              <div class="tab-pane fade active in" id="youtube">
-		            <div class="searchResults" id="youtubeSearchResults"></div>
-	              </div>
+	        <div class="tab-pane fade active in" id="youtube">
+	        	<div class="searchResults" id="youtubeSearchResults"></div>
+	        </div>
 
+	        <div class="tab-pane fade col-sm-12" id="iTunes">
+	        	<div class="searchResults" id="iTunesSearchResults"></div>
+	        </div>
 
-	              <div class="tab-pane fade col-sm-12" id="iTunes">
-	                <div class="searchResults" id="iTunesSearchResults"></div> 
-	              </div>
+	        <div class="tab-pane fade in" id="google">
+	        	<div class="searchResults" id="googleSearchResults">
+	        	<!-- <div id="country_trends"></div> -->
+	        		<iframe id="googleSearches" scrolling="no" style="border:none;" width="100%" height="413" src="http://www.google.com/trends/hottrends/widget?pn=p1&amp;tn=10&amp;h=413"></iframe>
+	        	</div>
+	        </div>
 
+	        <div class="tab-pane fade in" id="twitter">
+	        	<div class="searchResults" id="iTunesSearchResults"></div>
+	        </div>
 
-	              <div class="tab-pane fade in" id="google">
-	              	<div class="searchResults" id="googleSearchResults">
-<!-- 
-        					<div id="country_trends"></div> -->
-          		        <iframe id="googleSearches" scrolling="no" style="border:none;" width="100%" height="413" src="http://www.google.com/trends/hottrends/widget?pn=p1&amp;tn=10&amp;h=413"></iframe>
-	              	</div> 
-	              </div>
+	        <div class="tab-pane fade in" id="instagram">
+	        	<div class="searchResults" id="iTunesSearchResults"></div>
+	        </div>
 
-	              <div class="tab-pane fade in" id="twitter">
-	              	<div class="searchResults" id="iTunesSearchResults"></div> 
-	              </div>
+			<div class="tab-pane fade in" id="boxOffice">
+				<div class="searchResults" id="boxOfficeSearchResults"></div>
+			</div>
 
-	              <div class="tab-pane fade in" id="instagram">
-	              	<div class="searchResults" id="iTunesSearchResults"></div> 
-	              </div>
-
-	              <div class="tab-pane fade in" id="boxOffice">
-	              	<div class="searchResults" id="boxOfficeSearchResults">
-	              	</div> 
-	              </div>
-
-	              <div class="tab-pane fade in" id="favorites">
-	              	<div class="searchResults" id="favorites">
-	              	</div> 
-	              </div>
-
-	          </div>
-
-        </div>
+			<div class="tab-pane fade in" id="favorites">
+				<div class="searchResults" id="favorites"></div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <script>
-      $('#myTab a').click(function (e) {
-        e.preventDefault();
-        $(this).tab('show');
-        })
+	$('#myTab a').click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	})
 </script>
+
 <script>
-
-
 // $(function () {
 //   $('[data-toggle="tooltip"]').tooltip()
 // })
@@ -124,17 +115,9 @@
 //   $(document).ready(function($) {
 //     Tipped.create('.jqvmap-label', $('.jqvmap-label'));
 //   });
-
-
-
-// </script>
-
-
-
-
+</script>
 
 </body>
-
 </html>
 
 
