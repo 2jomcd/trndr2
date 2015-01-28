@@ -26,14 +26,15 @@
 }
 
 #logo{
-	margin-top: 70px;
-	margin-left: 40px;
+	margin-top: 10px;
+	margin-left: 30px;
 	position: absolute;
 	z-index: 10;
-	font-size: 35px;
+	font-size: 48px;
 	padding: 10px;
 	font-family: 'Roboto Slab', serif;
 	color: hsl(0,15%,15%);
+	text-shadow: 2px 2px purple;
 }
 #vmap{
 	width: 98%;
@@ -49,25 +50,25 @@
 }
 
 .pills a{
-	color: purple;
+	color: white;
 }
 
 #selectedCountryDiv{
-	font-size: 22px;
-	margin-top: 330px;
-	margin-left: 65px;
+	font-size: 24px;
+	margin-top: 300px;
+	margin-left: 50px;
 	position: absolute;
 	z-index: 10;
 }
 
 .nav-pills > .active > a, .nav-pills > .active > a:hover {
-    background-color: #a5bfdd !important;
+    background-color: purple !important;
     border-radius: 0px !important;
-    color: hsl(0,0%,15%) !important;
+    /*color: hsl(0,0%,5%) !important;*/
 /*    border-right: 5px solid hsl(0,0%,15%);
     border-left: 5px solid hsl(0,0%,15%);*/
-    border-top: 10px solid white;
-    border-bottom: 10px solid white;
+    border-top: 5px solid white;
+    border-bottom: 5px solid white;
 }
 
 /*.tooltip span {
