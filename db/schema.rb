@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20150128201411) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "country"
-    t.integer  "user_id"
     t.integer  "medium_id"
+    t.integer  "user_id"
   end
 
   create_table "media", force: :cascade do |t|
