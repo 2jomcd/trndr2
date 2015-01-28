@@ -34,7 +34,7 @@
 	padding: 10px;
 	font-family: 'Roboto Slab', serif;
 	color: hsl(0,15%,15%);
-	text-shadow: 2px 2px purple;
+	text-shadow: 2px 2px #00BCD4;
 }
 #vmap{
 	width: 98%;
@@ -62,7 +62,7 @@
 }
 
 .nav-pills > .active > a, .nav-pills > .active > a:hover {
-    background-color: purple !important;
+    background-color: #00BCD4 !important;
     border-radius: 0px !important;
     /*color: hsl(0,0%,5%) !important;*/
 /*    border-right: 5px solid hsl(0,0%,15%);

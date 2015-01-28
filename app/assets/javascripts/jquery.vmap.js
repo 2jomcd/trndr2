@@ -1107,11 +1107,11 @@ jQuery.fn.vectorMap('addMap', 'world_en', {"width":950,"height":550,"pathes":{"i
 
 jQuery('#vmap').vectorMap({
     map: 'world_en',
-    backgroundColor: '#a5bfdd',
-    borderColor: '#818181',
+    backgroundColor: 'white',
+    borderColor: '#00BCD4',
     borderOpacity: 0.25,
     borderWidth: 1,
-    color: '#FCFFCD',
+    color: '#00BCD4',
     enableZoom: true,
     hoverColor: 'purple',
     hoverOpacity: null,
