@@ -4,6 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :favorites, dependent: :destroy
-  has_many :favorite_media, through: :favorites, source: :medium, dependent: :destroy
+  # has_many :favorite_media, through: :favorites, source: :media, dependent: :destroy
 
 end
