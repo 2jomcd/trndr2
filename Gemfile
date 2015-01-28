@@ -34,7 +34,12 @@ gem 'figaro'
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass'
 
+gem "sinatra"
+gem "json"
+gem "twitter"
+gem "haml"
 
+gem 'pry'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
