@@ -5,6 +5,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true, :defer => "defer" %>
 
+	<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
   	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
   	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
@@ -50,67 +51,58 @@
 
         <div class="">
             <ul id="myTab" class="nav nav-pills nav-stacked col-sm-2">
-              <li id="youtubeTab" class="active pills"><a href="#youtube" data-toggle="tab">Youtube</a></li>
-              <li id="iTunesTab" class="pills"><a href="#iTunes" data-toggle="tab">iTunes</a></li>
-              <li id="googleTab" class="pills"><a href="#google" data-toggle="tab">Google</a></li>
-              <li id="twitterTab" class="pills"><a href="#twitter" data-toggle="tab">Twitter</a></li>
-              <li id="instagramTab" class="pills"><a href="#instagram" data-toggle="tab">Instagram</a></li>
-              <li id="boxOfficeTab" class="pills"><a href="#boxOffice" data-toggle="tab">Box Office</a></li>
-               <li id="favorites" class="pills"><a href="#favorites" data-toggle="tab">Favorites</a></li>
+	            <li id="youtubeTab" class="active pills"><a href="#youtube" data-toggle="tab">Youtube</a></li>
+	            <li id="iTunesTab" class="pills"><a href="#iTunes" data-toggle="tab">iTunes</a></li>
+	            <li id="googleTab" class="pills"><a href="#google" data-toggle="tab">Google</a></li>
+	            <li id="twitterTab" class="pills"><a href="#twitter" data-toggle="tab">Twitter</a></li>
+	            <li id="boxOfficeTab" class="pills"><a href="#boxOffice" data-toggle="tab">Rotten Tomatos Box Office</a></li>
+	            <li id="favorites" class="pills"><a href="#favorites" data-toggle="tab">Favorites</a></li>
             </ul>
 
-	          <div id="myTabContent" class="tab-content col-sm-10">
+	        <div id="myTabContent" class="tab-content col-sm-10">
 
-	              <div class="tab-pane fade active in" id="youtube">
-		            <div class="searchResults" id="youtubeSearchResults"></div>
-	              </div>
+	        <div class="tab-pane fade active in" id="youtube">
+	        	<div class="searchResults" id="youtubeSearchResults"></div>
+	        </div>
 
+	        <div class="tab-pane fade col-sm-12" id="iTunes">
+	        	<div class="searchResults" id="iTunesSearchResults"></div>
+	        </div>
 
-	              <div class="tab-pane fade col-sm-12" id="iTunes">
-	                <div class="searchResults" id="iTunesSearchResults"></div> 
-	              </div>
+	        <div class="tab-pane fade in" id="google">
+	        	<div class="searchResults" id="googleSearchResults">
+	        	<!-- <div id="country_trends"></div> -->
+	        		<iframe id="googleSearches" scrolling="no" style="border:none;" width="100%" height="413" src="http://www.google.com/trends/hottrends/widget?pn=p1&amp;tn=10&amp;h=413"></iframe>
+	        	</div>
+	        </div>
 
+	        <div class="tab-pane fade in" id="twitter">
+	        	<div class="searchResults" id="iTunesSearchResults"></div>
+	        </div>
 
-	              <div class="tab-pane fade in" id="google">
-	              	<div class="searchResults" id="googleSearchResults">
-<!-- 
-        					<div id="country_trends"></div> -->
-          		        <iframe id="googleSearches" scrolling="no" style="border:none;" width="100%" height="413" src="http://www.google.com/trends/hottrends/widget?pn=p1&amp;tn=10&amp;h=413"></iframe>
-	              	</div> 
-	              </div>
+	        <div class="tab-pane fade in" id="instagram">
+	        	<div class="searchResults" id="iTunesSearchResults"></div>
+	        </div>
 
-	              <div class="tab-pane fade in" id="twitter">
-	              	<div class="searchResults" id="iTunesSearchResults"></div> 
-	              </div>
+			<div class="tab-pane fade in" id="boxOffice">
+				<div class="searchResults" id="boxOfficeSearchResults"></div>
+			</div>
 
-	              <div class="tab-pane fade in" id="instagram">
-	              	<div class="searchResults" id="iTunesSearchResults"></div> 
-	              </div>
-
-	              <div class="tab-pane fade in" id="boxOffice">
-	              	<div class="searchResults" id="boxOfficeSearchResults">
-	              	</div> 
-	              </div>
-
-	              <div class="tab-pane fade in" id="favorites">
-	              	<div class="searchResults" id="favorites">
-	              	</div> 
-	              </div>
-
-	          </div>
-
-        </div>
+			<div class="tab-pane fade in" id="favorites">
+				<div class="searchResults" id="favorites"></div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <script>
-      $('#myTab a').click(function (e) {
-        e.preventDefault();
-        $(this).tab('show');
-        })
+	$('#myTab a').click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	})
 </script>
+
 <script>
-
-
 // $(function () {
 //   $('[data-toggle="tooltip"]').tooltip()
 // })
@@ -123,17 +115,9 @@
 //   $(document).ready(function($) {
 //     Tipped.create('.jqvmap-label', $('.jqvmap-label'));
 //   });
-
-
-
-// </script>
-
-
-
-
+</script>
 
 </body>
-
 </html>
 
 
