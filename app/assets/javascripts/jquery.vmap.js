@@ -1302,18 +1302,19 @@ jQuery('#vmap').vectorMap({
                  youtubeData = data.getElementsByTagName("entry");
                  resultsLength = youtubeData.length;
                  console.log(resultsLength);
-
+                 var content = '<table>'
                  for (i= 0; i < 10; i++){
                     var withTag= youtubeData[i].firstChild;
                     var noTag= $(withTag).text().split('/');
                     var vidId= noTag[noTag.length - 1];
                     var number= i+1;
-                    console.log(vidId);
-                  $('#youtubeSearchResults').append($('<li></li>').html(number + '<iframe title="YouTube video player" src="http://www.youtube.com/embed/' + vidId + '" width="430" height="305" frameborder="0" allowfullscreen="1"></iframe>'));
+                    content += '<tr><td class="numberColumn col-sm-3">' +  number + '</td><td class="col-sm-4"><iframe title="YouTube video player" src="http://www.youtube.com/embed/' + vidId + '" width="430" height="305" frameborder="0" allowfullscreen="1"></iframe></td><td class="col-sm-4">'
++ '<button class="favoriteButtons"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button></td></tr>' 
                   };
+            $('#youtubeSearchResults').append(content);
             });
-        }
-
+        };
+// '<td>' + number + '</td><td><iframe title="YouTube video player" src="http://www.youtube.com/embed/' + vidId + '" width="430" height="305" frameborder="0" allowfullscreen="1"></iframe></td>'
 
         var loadSongs = function() {
 
@@ -1323,9 +1324,10 @@ jQuery('#vmap').vectorMap({
             $.getJSON(apiURL, function(data) {
              // console.log(data)
                  resultsLength = data.feed.entry.length;
-
-                 for (i= 0; i < resultsLength; i++){
+                 var content= '<table>'
+                 for (i= 0; i < 10; i++){
                  var countryOne = data.feed.entry[i];
+                 var number = i + 1;
                  // console.log(countryOne);
                  var album = countryOne['im:collection']['im:name'].label;
                  var titleAndArtist = countryOne['title'].label;
@@ -1335,11 +1337,10 @@ jQuery('#vmap').vectorMap({
                  var imgUrl= countryOne['im:image'][2].label;
                  var genre= countryOne['category'].attributes.label;
                  var preview= countryOne['link'][1].attributes.href;
-                 console.log(preview);
-
-                   $('#iTunesSearchResults').append($('<li></li>').html("<img src=" + imgUrl + ">" + 
-                     '<audio controls="" autostart="0" name="media"><source src="' + preview +'" type="audio/mp4"></audio>' + "<br>" + "<strong>" + titleAndArtist + "</strong>   " + "<br>" + album + "&nbsp&nbsp ~ &nbsp&nbsp" + genre ));
-                 }
+                  content += '<tr><td class="numberColumn col-sm-1">' +  number + '</td><td class="col-sm-2"><img src=' + imgUrl + '></td><td class="col-sm-3">' + "<strong>" + titleAndArtist + "</strong><br>" + album + "&nbsp&nbsp ~ &nbsp&nbsp" + genre +
+                 '</td><td class="col-sm-3">' + '<audio controls="" autostart="0" name="media" source src=' + preview + ' type="audio/mp4"></audio>' + '</td><td class="col-sm-2"><button class="favoriteButtons"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button></td></tr>' 
+                }
+                   $('#iTunesSearchResults').append(content);
             });
         }
 
@@ -1353,23 +1354,26 @@ jQuery('#vmap').vectorMap({
                  url:  apiURL,   
                  success: function(response){
                   var movies = response.movies
-                  console.log(movies);
+                  var content= '<table>'
                   for (i=0; i<10; i++){
                     var title= movies[i].title;
-                    var actors= []
-                      for (j=0; j<5; j++){
+                    var actors= [];
+                    var number = i + 1;            
+                    for (j=0; j<5; j++){
                         actors.push(movies[i].abridged_cast[j].name)
                       };
                     var released = movies[i].release_dates.theater;
                     var runtime= movies[i].runtime;
                     var synopsis= movies[i].synopsis;
-                    var imageUrl = movies[i].posters.original;
+                    var imgUrl = movies[i].posters.original;
                     var link = movies[i].links.alternate;
-                    var audience= movies[i].audience_score;
-                    var critics= movies[i].critics_score;
-                    console.log(title);
-                    $('#boxOfficeSearchResults').append($('<li></li>').html("<img src=" + imageUrl + ">" + title + "<br>" + actors[0] + "&nbsp" + actors[1] + "&nbsp" + actors[2] + "&nbsp"  + actors[3] + "&nbsp"  + actors[4] + "<br>runtime:" + runtime + synopsis + audience + critics));
+                    var audience= movies[i].ratings.audience_score;
+                    var critics= movies[i].ratings.critics_score;
+                    var rating = movies[i].mpaa_rating; 
+                    console.log(movies[i]);
+                    content += '<tr><td class="numberColumn col-sm-1">' +  number + '</td><td class="col-sm-2"><img width="100px" src=' + imgUrl + '></td><td class="col-sm-3"><strong>' + title + '</strong><br><div class="movieInfo">' + actors[0] + "&nbsp" + actors[1] + "&nbsp" + actors[2] + "&nbsp"  + actors[3] + "&nbsp"  + actors[4] + '<br><br>Rated: ' + rating + '<br>Runtime: ' + runtime + ' min<br>audience rating: ' + audience + '<br>critic rating: ' + critics + '</div><button class="favoriteButtons boxOfficeFavoriteButtons"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button>' + '</td><td class="col-sm-5"><div class="synopsisDivs">' + synopsis  + '</div></td></tr>'               
                   }
+                  $('#boxOfficeSearchResults').append(content);
                 }
             });
         }
