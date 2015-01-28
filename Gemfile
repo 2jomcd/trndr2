@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+# use devise for user authentication and password management
+gem 'devise', '~> 3.4.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
@@ -53,10 +54,12 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 3.0'
 
+  gem 'factory_girl_rails'
+
 end
 
 group :test do
-	gem 'shoulda-matchers', require: false
+	gem 'shoulda-matchers', require: true
   gem 'capybara'
   gem 'launchy'
 end

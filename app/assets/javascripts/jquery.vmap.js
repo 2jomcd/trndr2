@@ -1127,6 +1127,169 @@ jQuery('#vmap').vectorMap({
         $('#selectedCountryDiv').text(region);
 
 
+        //google
+
+        var googleSearch = function(){
+
+                //read selected country from select dropdown
+                var googleCountryCode = function(code){
+                  if(code == 'us'){
+                    return 'p1'
+                  };
+                  if(code == 'ar'){
+                    return 'p30'
+                  };
+                  if(code == 'au'){
+                    return 'p8'
+                  };
+                  if(code == 'be'){
+                    return 'p41'
+                  };
+                  if(code == 'br'){
+                    return 'p18'
+                  };
+                  if(code == 'ca'){
+                    return 'p13'
+                  };
+                  if(code == 'cl'){
+                    return 'p38'
+                  };
+                  if(code == 'co'){
+                    return 'p32'
+                  };
+                  if(code == 'cz'){
+                    return 'p43'
+                  };
+                  if(code == 'dk'){
+                    return 'p49'
+                  };
+                  if(code == 'eg'){
+                    return 'p29'
+                  };
+                  if(code == 'fi'){
+                    return 'p50'
+                  };
+                  if(code == 'fr'){
+                    return 'p16'
+                  };
+                  if(code == 'de'){
+                    return 'p15'
+                  };
+                  if(code == 'gr'){
+                    return 'p48'
+                  };
+                  if(code == 'hk'){
+                    return 'p10'
+                  };
+                  if(code == 'hu'){
+                    return 'p45'
+                  };
+                  if(code == 'in'){
+                    return 'p3'
+                  };
+                  if(code == 'id'){
+                    return 'p19'
+                  };
+                  if(code == 'il'){
+                    return 'p6'
+                  };
+                  if(code == 'it'){
+                    return 'p27'
+                  };
+                  if(code == 'jp'){
+                    return 'p4'
+                  };
+                  if(code == 'ke'){
+                    return 'p37'
+                  };
+                  if(code == 'my'){
+                    return 'p34'
+                  };
+                  if(code == 'mx'){
+                    return 'p21'
+                  };
+                  if(code == 'nl'){
+                    return 'p17'
+                  };
+                  if(code == 'ng'){
+                    return 'p52'
+                  };
+                  if(code == 'no'){
+                    return 'p51'
+                  };
+                  if(code == 'ph'){
+                    return 'p25'
+                  };
+                  if(code == 'pl'){
+                    return 'p31'
+                  };
+                  if(code == 'pt'){
+                    return 'p47'
+                  };
+                  if(code == 'ro'){
+                    return 'p39'
+                  };
+                  if(code == 'ru'){
+                    return 'p14'
+                  };
+                  if(code == 'sa'){
+                    return 'p36'
+                  };
+                  if(code == 'sg'){
+                    return 'p5'
+                  };
+                  if(code == 'za'){
+                    return 'p40'
+                  };    
+                  if(code == 'kr'){
+                    return 'p23'
+                  };
+                  if(code == 'es'){
+                    return 'p26'
+                  };
+                  if(code == 'se'){
+                    return 'p42'
+                  };
+                  if(code == 'ch'){
+                    return 'p46'
+                  };
+                  if(code == 'tw'){
+                    return 'p12'
+                  };
+                  if(code == 'th'){
+                    return 'p33'
+                  };
+                  if(code == 'tr'){
+                    return 'p24'
+                  };
+                  if(code == 'ua'){
+                    return 'p35'
+                  };
+                  if(code == 'uk'){
+                    return 'p9'
+                  };
+                  if(code == 'vn'){
+                    return 'p28'
+                  };
+                }
+                $("#googleSearches").attr("src", "http://www.google.com/trends/hottrends/widget?pn=" + googleCountryCode(code) + "&tn=10&h=413");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         var loadVideos = function() {
             $('#youtubeSearchResults').empty();
 
@@ -1212,19 +1375,26 @@ jQuery('#vmap').vectorMap({
         }
 
 
-
-        if ($('#youtubeTab').hasClass('active')){
-            loadVideos();
-        }
-
-
-        if ($('#iTunesTab').hasClass('active')){
-            loadSongs();
-        }
-
-        if ($('#boxOfficeTab').hasClass('active')){
+            googleSearch();
             loadMovies();
-        }
+            loadSongs();
+            loadVideos();
+
+        // if ($('#youtubeTab').hasClass('active')){
+        //     loadVideos();
+        // }
+
+
+        // if ($('#iTunesTab').hasClass('active')){
+        //     loadSongs();
+        // }
+
+        // if ($('#boxOfficeTab').hasClass('active')){
+        //     loadMovies();
+        // }
+        // if ($('#googleTab').hasClass('active')){
+        //     googleSearch();
+        // }
     }
 });
 
