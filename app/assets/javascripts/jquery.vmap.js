@@ -1378,11 +1378,17 @@ jQuery('#vmap').vectorMap({
             });
         }
 
+       var loadTweets= function(){
+            $.get('/tweets').done(function(tweets){
+              console.log(tweets)
+            });
+        };
+        loadTweets();
 
-            googleSearch();
-            loadMovies();
-            loadSongs();
-            loadVideos();
+            // googleSearch();
+            // loadMovies();
+            // loadSongs();
+            // loadVideos();
 
         // if ($('#youtubeTab').hasClass('active')){
         //     loadVideos();
