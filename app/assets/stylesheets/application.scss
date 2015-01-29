@@ -15,10 +15,10 @@
 .searchResults{
 	height: 312px;
 /*	width: 100%;*/
-	border-top: 1px solid hsl(0,0%,15%);
+/*	border-top: 1px solid hsl(0,0%,15%);
 	border-bottom: 1px solid hsl(0,0%,15%);
 	border-left: 10px solid hsl(0,0%,15%);
-	border-right: 10px solid hsl(0,0%,15%);
+	border-right: 10px solid hsl(0,0%,15%);*/
 
 /*	margin-top: 10px;*/
 	overflow-y: scroll;
@@ -47,7 +47,9 @@
 
 .pills{
 	background-color: hsl(0,0%,15%);
+	border-bottom: solid 10px white;
 }
+
 
 .pills a{
 	color: white;
@@ -86,6 +88,15 @@
 	width: 350px;
 	margin: 0 auto;
 	text-align: left;
+}
+
+.pills a:hover{
+	border-radius: 0px !important;
+	color: black !important;
+}
+
+#favoritesTab a:hover{
+	color: black !important;
 }
 
 /*.tooltip span {
