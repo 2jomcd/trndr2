@@ -55,8 +55,8 @@
 
 #selectedCountryDiv{
 	font-size: 24px;
-	margin-top: 300px;
-	margin-left: 50px;
+	margin-top: 350px;
+	margin-left: 17%;
 	position: absolute;
 	z-index: 10;
 }
@@ -72,7 +72,17 @@
 }
 
 
-.edit_user {
+#favoritesTab{
+	background-color: purple !important;
+/*	color: black !important;
+	border: purple 4px solid;*/
+}
+
+#favoritesTab a{
+	color: white !important;
+}
+
+.edit_user{
 	width: 350px;
 	margin: 0 auto;
 	text-align: left;
@@ -86,3 +96,5 @@
     position:fixed;
     overflow:hidden;
 }*/
+
+
