@@ -15,11 +15,10 @@
 .searchResults{
 	height: 312px;
 /*	width: 100%;*/
-/*	border-top: 1px solid hsl(0,0%,15%);
-	border-bottom: 1px solid hsl(0,0%,15%);
-	border-left: 10px solid hsl(0,0%,15%);
-	border-right: 10px solid hsl(0,0%,15%);*/
-
+/*	border-top: solid 3px hsl(270,0%,95%);
+    border-right: solid 6px hsl(270,0%,85%);
+	border-left: solid 6px hsl(270,0%,90%);*/
+/*	border-bottom: solid 3px hsl(270,0%,13%);*/
 /*	margin-top: 10px;*/
 	overflow-y: scroll;
 	text-align: center;
@@ -38,11 +37,11 @@
 }
 #vmap{
 	width: 98%;
-	border-left: 10px solid hsl(0,0%,15%);
+/*	border-left: 10px solid hsl(0,0%,15%);
 	border-right: 10px solid hsl(0,0%,15%);
 	border-top: 1px solid hsl(0,0%,15%);
 	border-bottom: 1px solid hsl(0,0%,15%);
-/*	background-color: hsla(204, 75%, 82%, 0.87);*/
+*//*	background-color: hsla(204, 75%, 82%, 0.87);*/
 }
 
 .pills{
