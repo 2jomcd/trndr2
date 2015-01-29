@@ -1,0 +1,37 @@
+How to push local to remote and merge to Master
+
+28XX  Terminal commands by Dennis
+#  		Joe's notes
+
+#	Prerequisite work in a local branch off your local Master
+#	Try to keep branch structure of local site a mirror of branch structure of remote 
+
+# Stage all changes locally and commit locally
+ 2829  git add --all
+ 2830  git commit -m "Create user model and tests"
+# check git status and look at log
+ 2831  git status
+ 2833  git log
+# Create new remote branch on GitHub and push to it
+ 2834  git push origin HEAD:authentication
+ # Do a pull request from remote master and see notice of conflicts
+ # Create a new branch locally and git into it
+ 2837  git checkout -b authentication-master
+ # pull down the remote Master branch
+ 2838  git pull origin master
+ # Fix merge conflicts identified by git
+ 2839  bundle update
+ 2840  git checkout HEAD -- Gemfile.lock
+ 2841  bundle update
+ # once merge conflicts fixed add, commit, and push to remote branch
+ 2842  git add --all
+ 2843  git commit -m "Fix merge conflicts"
+ 2844  git push origin HEAD:authentication
+# on gitHub merge branch into old master to vreate new merged master with no conflicts
+# create new master branch locally
+ 2851  git checkout master
+# pull new, post-merge master from remote into local master
+ 2852  git pull origin master
+# Delete old branches on Github and locally
+ 2854  git branch -D authentication-master
+
