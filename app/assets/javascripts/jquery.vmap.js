@@ -1278,16 +1278,146 @@ jQuery('#vmap').vectorMap({
 
 
 
-
-
-
-
-
-
-
-
-
-
+  var findTwitterCountryCode = function(code){
+                  if(code == 'us'){
+                    return '23424977'
+                  };
+                  if(code == 'ar'){
+                    return '23424747'
+                  };
+                  if(code == 'au'){
+                    return '23424748'
+                  };
+                  if(code == 'be'){
+                    return '23424757'
+                  };
+                  if(code == 'br'){
+                    return '23424768'
+                  };
+                  if(code == 'ca'){
+                    return '23424775'
+                  };
+                  if(code == 'cl'){
+                    return '23424782'
+                  };
+                  if(code == 'co'){
+                    return '23424787'
+                  };
+                  if(code == 'cz'){
+                    return '23424810'
+                  };
+                  if(code == 'dk'){
+                    return '23424796'
+                  };
+                  if(code == 'eg'){
+                    return '23424802'
+                  };
+                  if(code == 'fi'){
+                    return '23424812'
+                  };
+                  if(code == 'fr'){
+                    return '23424819'
+                  };
+                  if(code == 'de'){
+                    return '23424829'
+                  };
+                  if(code == 'gr'){
+                    return '23424833'
+                  };
+                  if(code == 'hk'){
+                    return '24865698'
+                  };
+                  if(code == 'hu'){
+                    return '23424844'
+                  };
+                  if(code == 'in'){
+                    return '23424848'
+                  };
+                  if(code == 'id'){
+                    return '23424846'
+                  };
+                  if(code == 'il'){
+                    return '23424852'
+                  };
+                  if(code == 'it'){
+                    return '23424853'
+                  };
+                  if(code == 'jp'){
+                    return '23424856'
+                  };
+                  if(code == 'ke'){
+                    return '23424863'
+                  };
+                  if(code == 'my'){
+                    return '23424901'
+                  };
+                  if(code == 'mx'){
+                    return '23424900'
+                  };
+                  if(code == 'nl'){
+                    return '23424909'
+                  };
+                  if(code == 'ng'){
+                    return '23424908'
+                  };
+                  if(code == 'no'){
+                    return '23424910'
+                  };
+                  if(code == 'ph'){
+                    return '23424934'
+                  };
+                  if(code == 'pl'){
+                    return '23424923'
+                  };
+                  if(code == 'pt'){
+                    return '23424925'
+                  };
+                  if(code == 'ro'){
+                    return '23424933'
+                  };
+                  if(code == 'ru'){
+                    return '23424936'
+                  };
+                  if(code == 'sa'){
+                    return '23424938'
+                  };
+                  if(code == 'sg'){
+                    return '23424948'
+                  };
+                  if(code == 'za'){
+                    return '23424942'
+                  };    
+                  if(code == 'kr'){
+                    return '23424868'
+                  };
+                  if(code == 'es'){
+                    return '23424950'
+                  };
+                  if(code == 'se'){
+                    return '23424954'
+                  };
+                  if(code == 'ch'){
+                    return '23424957'
+                  };
+                  if(code == 'tw'){
+                    return '23424971'
+                  };
+                  if(code == 'th'){
+                    return '23424960'
+                  };
+                  if(code == 'tr'){
+                    return '23424969'
+                  };
+                  if(code == 'ua'){
+                    return '23424976'
+                  };
+                  if(code == 'uk'){
+                    return '23424975'
+                  };
+                  if(code == 'vn'){
+                    return '23424984'
+                  };
+  };
 
 
         var loadVideos = function() {
@@ -1302,18 +1432,19 @@ jQuery('#vmap').vectorMap({
                  youtubeData = data.getElementsByTagName("entry");
                  resultsLength = youtubeData.length;
                  console.log(resultsLength);
-
+                 var content = '<table>'
                  for (i= 0; i < 10; i++){
                     var withTag= youtubeData[i].firstChild;
                     var noTag= $(withTag).text().split('/');
                     var vidId= noTag[noTag.length - 1];
                     var number= i+1;
-                    console.log(vidId);
-                  $('#youtubeSearchResults').append($('<li></li>').html(number + '<iframe title="YouTube video player" src="http://www.youtube.com/embed/' + vidId + '" width="430" height="305" frameborder="0" allowfullscreen="1"></iframe>'));
+                    content += '<tr><td class="numberColumn col-sm-3">' +  number + '</td><td class="col-sm-4"><iframe title="YouTube video player" src="http://www.youtube.com/embed/' + vidId + '" width="430" height="305" frameborder="0" allowfullscreen="1"></iframe></td><td class="col-sm-4">'
++ '<button class="favoriteButtons"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button></td></tr>' 
                   };
+            $('#youtubeSearchResults').append(content);
             });
-        }
-
+        };
+// '<td>' + number + '</td><td><iframe title="YouTube video player" src="http://www.youtube.com/embed/' + vidId + '" width="430" height="305" frameborder="0" allowfullscreen="1"></iframe></td>'
 
         var loadSongs = function() {
 
@@ -1323,9 +1454,10 @@ jQuery('#vmap').vectorMap({
             $.getJSON(apiURL, function(data) {
              // console.log(data)
                  resultsLength = data.feed.entry.length;
-
-                 for (i= 0; i < resultsLength; i++){
+                 var content= '<table>'
+                 for (i= 0; i < 10; i++){
                  var countryOne = data.feed.entry[i];
+                 var number = i + 1;
                  // console.log(countryOne);
                  var album = countryOne['im:collection']['im:name'].label;
                  var titleAndArtist = countryOne['title'].label;
@@ -1335,11 +1467,10 @@ jQuery('#vmap').vectorMap({
                  var imgUrl= countryOne['im:image'][2].label;
                  var genre= countryOne['category'].attributes.label;
                  var preview= countryOne['link'][1].attributes.href;
-                 console.log(preview);
-
-                   $('#iTunesSearchResults').append($('<li></li>').html("<img src=" + imgUrl + ">" + 
-                     '<audio controls="" autostart="0" name="media"><source src="' + preview +'" type="audio/mp4"></audio>' + "<br>" + "<strong>" + titleAndArtist + "</strong>   " + "<br>" + album + "&nbsp&nbsp ~ &nbsp&nbsp" + genre ));
-                 }
+                  content += '<tr><td class="numberColumn col-sm-1">' +  number + '</td><td class="col-sm-2"><img src=' + imgUrl + '></td><td class="col-sm-3">' + "<strong>" + titleAndArtist + "</strong><br>" + album + "&nbsp&nbsp ~ &nbsp&nbsp" + genre +
+                 '</td><td class="col-sm-3">' + '<audio controls="" autostart="0" name="media" source src=' + preview + ' type="audio/mp4"></audio>' + '</td><td class="col-sm-2"><button class="favoriteButtons"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button></td></tr>' 
+                }
+                   $('#iTunesSearchResults').append(content);
             });
         }
 
@@ -1353,32 +1484,54 @@ jQuery('#vmap').vectorMap({
                  url:  apiURL,   
                  success: function(response){
                   var movies = response.movies
-                  console.log(movies);
+                  var content= '<table>'
                   for (i=0; i<10; i++){
                     var title= movies[i].title;
-                    var actors= []
-                      for (j=0; j<5; j++){
+                    var actors= [];
+                    var number = i + 1;            
+                    for (j=0; j<5; j++){
                         actors.push(movies[i].abridged_cast[j].name)
                       };
                     var released = movies[i].release_dates.theater;
                     var runtime= movies[i].runtime;
                     var synopsis= movies[i].synopsis;
-                    var imageUrl = movies[i].posters.original;
+                    var imgUrl = movies[i].posters.original;
                     var link = movies[i].links.alternate;
-                    var audience= movies[i].audience_score;
-                    var critics= movies[i].critics_score;
-                    console.log(title);
-                    $('#boxOfficeSearchResults').append($('<li></li>').html("<img src=" + imageUrl + ">" + title + "<br>" + actors[0] + "&nbsp" + actors[1] + "&nbsp" + actors[2] + "&nbsp"  + actors[3] + "&nbsp"  + actors[4] + "<br>runtime:" + runtime + synopsis + audience + critics));
+                    var audience= movies[i].ratings.audience_score;
+                    var critics= movies[i].ratings.critics_score;
+                    var rating = movies[i].mpaa_rating; 
+                    console.log(movies[i]);
+                    content += '<tr><td class="numberColumn col-sm-1">' +  number + '</td><td class="col-sm-2"><img width="100px" src=' + imgUrl + '></td><td class="col-sm-3"><strong>' + title + '</strong><br><div class="movieInfo">' + actors[0] + "&nbsp" + actors[1] + "&nbsp" + actors[2] + "&nbsp"  + actors[3] + "&nbsp"  + actors[4] + '<br><br>Rated: ' + rating + '<br>Runtime: ' + runtime + ' min<br>audience rating: ' + audience + '<br>critic rating: ' + critics + '</div><button class="favoriteButtons boxOfficeFavoriteButtons"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button>' + '</td><td class="col-sm-5"><div class="synopsisDivs">' + synopsis  + '</div></td></tr>'               
                   }
+                  $('#boxOfficeSearchResults').append(content);
                 }
             });
         }
 
-
+       var loadTweets= function(){
+            $('#twitterSearchResults').empty();
+            var twitterCountryCode = findTwitterCountryCode(code);
+            $.ajax('/tweets',{
+              type: 'GET',
+              dataType: 'json',
+              data: {twitterCountryCode : twitterCountryCode},
+            }).done(function(tweets){
+              var content  = '<table width=100%>'
+              for(i=0; i<10; i++){
+                var number = i + 1;   
+                var name = tweets[0].trends[i].name;
+                var url = tweets[0].trends[i].url
+                content += '<tr><td class="numberColumn col-sm-4">' +  number + '</td><td class="col-sm-9 twitterResultCells">' + '<a href="' + url + '">' + name + '</a></td></tr>'
+              }
+              $('#twitterSearchResults').append(content);
+            });
+        };
+            
+            loadVideos();
             googleSearch();
             loadMovies();
             loadSongs();
-            loadVideos();
+            loadTweets();
 
         // if ($('#youtubeTab').hasClass('active')){
         //     loadVideos();

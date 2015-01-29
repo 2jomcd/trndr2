@@ -51,48 +51,47 @@
 
         <div class="">
             <ul id="myTab" class="nav nav-pills nav-stacked col-sm-2">
-	            <li id="youtubeTab" class="active pills"><a href="#youtube" data-toggle="tab">Youtube</a></li>
-	            <li id="iTunesTab" class="pills"><a href="#iTunes" data-toggle="tab">iTunes</a></li>
-	            <li id="googleTab" class="pills"><a href="#google" data-toggle="tab">Google</a></li>
-	            <li id="twitterTab" class="pills"><a href="#twitter" data-toggle="tab">Twitter</a></li>
-	            <li id="boxOfficeTab" class="pills"><a href="#boxOffice" data-toggle="tab">Rotten Tomatos Box Office</a></li>
-	            <li id="favorites" class="pills"><a href="#favorites" data-toggle="tab">Favorites</a></li>
+              <li id="youtubeTab" class="active pills"><a href="#youtube" data-toggle="tab">Youtube</a></li>
+              <li id="iTunesTab" class="pills"><a href="#iTunes" data-toggle="tab">iTunes</a></li>
+              <li id="googleTab" class="pills"><a href="#google" data-toggle="tab">Google</a></li>
+              <li id="twitterTab" class="pills"><a href="#twitter" data-toggle="tab">Twitter</a></li>
+              <li id="boxOfficeTab" class="pills"><a href="#boxOffice" data-toggle="tab">Rotten TomatoesBox Office</a></li>    
+              <li id="favoritesTab" class="pills"><a href="#favorites" data-toggle="tab">Favorites</a></li>
             </ul>
 
 	        <div id="myTabContent" class="tab-content col-sm-10">
 
-	        <div class="tab-pane fade active in" id="youtube">
-	        	<div class="searchResults" id="youtubeSearchResults"></div>
-	        </div>
+	              <div class="tab-pane fade active in" id="youtube">
+		            <div class="searchResults" id="youtubeSearchResults">
+		            </div>
+	              </div>
 
-	        <div class="tab-pane fade col-sm-12" id="iTunes">
-	        	<div class="searchResults" id="iTunesSearchResults"></div>
-	        </div>
 
-	        <div class="tab-pane fade in" id="google">
-	        	<div class="searchResults" id="googleSearchResults">
-	        	<!-- <div id="country_trends"></div> -->
-	        		<iframe id="googleSearches" scrolling="no" style="border:none;" width="100%" height="413" src="http://www.google.com/trends/hottrends/widget?pn=p1&amp;tn=10&amp;h=413"></iframe>
-	        	</div>
-	        </div>
+	              <div class="tab-pane fade col-sm-12" id="iTunes">
+	                <div class="searchResults" id="iTunesSearchResults"></div> 
+	              </div>
 
-	        <div class="tab-pane fade in" id="twitter">
-	        	<div class="searchResults" id="iTunesSearchResults"></div>
-	        </div>
+	              <div class="tab-pane fade in" id="google">
+	              	<div class="searchResults" id="googleSearchResults"><div class="col-sm-2"></div>
+        			<div id="country_trends"></div>
+          		        <iframe id="googleSearches" scrolling="no" style="border:none;" width="70%" height="413" src="http://www.google.com/trends/hottrends/widget?pn=p1&amp;tn=10&amp;h=413"></iframe>
+	              	</div> 
+	              </div>
 
-	        <div class="tab-pane fade in" id="instagram">
-	        	<div class="searchResults" id="iTunesSearchResults"></div>
-	        </div>
+	              <div class="tab-pane fade in" id="twitter">
+	              	<div class="searchResults" id="twitterSearchResults"></div> 
+	              </div>
 
-			<div class="tab-pane fade in" id="boxOffice">
-				<div class="searchResults" id="boxOfficeSearchResults"></div>
-			</div>
+					<div class="tab-pane fade in" id="boxOffice">
+						<div class="searchResults" id="boxOfficeSearchResults"></div>
+					</div>
 
-			<div class="tab-pane fade in" id="favorites">
-				<div class="searchResults" id="favorites"></div>
-			</div>
+					<div class="tab-pane fade in" id="favorites">
+						<div class="searchResults" id="favorites"></div>
+					</div>
 		</div>
 	</div>
+
 </div>
 
 <script>
@@ -111,11 +110,63 @@
 
 <!-- <div id="element-example-tooltip" style="display:none">This element is moved into the tooltip</div>
     --> 
-<script type="text/javascript">
-//   $(document).ready(function($) {
-//     Tipped.create('.jqvmap-label', $('.jqvmap-label'));
-//   });
-</script>
+
+<style>
+.numberColumn{
+	font-size: 50px;
+	text-align: left;
+}
+
+.favoriteButtons{
+	background: transparent;
+	border: none;
+}
+
+.glyphicon-star{
+	font-size: 50px;
+}
+
+.glyphicon-star:hover{
+	color:purple;
+}
+
+
+.synopsisDivs{
+	height: 120px;
+	overflow-y: scroll;
+	border-top: solid 3px hsl(270,0%,95%);
+    border-right: solid 3px hsl(270,0%,85%);
+	border-left: solid 3px hsl(270,0%,90%);
+	border-bottom: solid 3px hsl(270,0%,77%);
+}
+
+tr{
+/*	border-top: solid 3px hsl(0,0%,60%);*/
+	border-bottom: solid 3px hsl(0,0%,90%);
+}
+
+.boxOfficeFavoriteButtons{
+/*	position: absolute; 
+	z-index: 10;*/
+	margin-left: -80px;
+	margin-top: 60px;
+/*	float: right;
+*/}
+
+.movieInfo{
+	text-align: left;
+	position: relative;
+	float: left;
+}
+
+.twitterResultCells{
+	font-size: 30px;
+/*	width: 80%;*/
+	text-align: left;
+}
+
+</style>
+
 
 </body>
 </html>
