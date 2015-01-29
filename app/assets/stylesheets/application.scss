@@ -26,6 +26,7 @@
 }
 
 #logo{
+	width: 30px;
 	margin-top: 5px;
 	margin-left: 15px;
 	position: absolute;
@@ -97,6 +98,10 @@
 
 #favoritesTab a:hover{
 	color: black !important;
+}
+
+.navbar-nav{
+	padding-top: 6px;
 }
 
 /*.tooltip span {
