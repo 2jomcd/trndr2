@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+
+  get '/tweets' => 'twitter#tweets'
+
   # get '/users/new' => 'users/registrations#new'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

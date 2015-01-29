@@ -1278,16 +1278,146 @@ jQuery('#vmap').vectorMap({
 
 
 
-
-
-
-
-
-
-
-
-
-
+  var findTwitterCountryCode = function(code){
+                  if(code == 'us'){
+                    return '23424977'
+                  };
+                  if(code == 'ar'){
+                    return '23424747'
+                  };
+                  if(code == 'au'){
+                    return '23424748'
+                  };
+                  if(code == 'be'){
+                    return '23424757'
+                  };
+                  if(code == 'br'){
+                    return '23424768'
+                  };
+                  if(code == 'ca'){
+                    return '23424775'
+                  };
+                  if(code == 'cl'){
+                    return '23424782'
+                  };
+                  if(code == 'co'){
+                    return '23424787'
+                  };
+                  if(code == 'cz'){
+                    return '23424810'
+                  };
+                  if(code == 'dk'){
+                    return '23424796'
+                  };
+                  if(code == 'eg'){
+                    return '23424802'
+                  };
+                  if(code == 'fi'){
+                    return '23424812'
+                  };
+                  if(code == 'fr'){
+                    return '23424819'
+                  };
+                  if(code == 'de'){
+                    return '23424829'
+                  };
+                  if(code == 'gr'){
+                    return '23424833'
+                  };
+                  if(code == 'hk'){
+                    return '24865698'
+                  };
+                  if(code == 'hu'){
+                    return '23424844'
+                  };
+                  if(code == 'in'){
+                    return '23424848'
+                  };
+                  if(code == 'id'){
+                    return '23424846'
+                  };
+                  if(code == 'il'){
+                    return '23424852'
+                  };
+                  if(code == 'it'){
+                    return '23424853'
+                  };
+                  if(code == 'jp'){
+                    return '23424856'
+                  };
+                  if(code == 'ke'){
+                    return '23424863'
+                  };
+                  if(code == 'my'){
+                    return '23424901'
+                  };
+                  if(code == 'mx'){
+                    return '23424900'
+                  };
+                  if(code == 'nl'){
+                    return '23424909'
+                  };
+                  if(code == 'ng'){
+                    return '23424908'
+                  };
+                  if(code == 'no'){
+                    return '23424910'
+                  };
+                  if(code == 'ph'){
+                    return '23424934'
+                  };
+                  if(code == 'pl'){
+                    return '23424923'
+                  };
+                  if(code == 'pt'){
+                    return '23424925'
+                  };
+                  if(code == 'ro'){
+                    return '23424933'
+                  };
+                  if(code == 'ru'){
+                    return '23424936'
+                  };
+                  if(code == 'sa'){
+                    return '23424938'
+                  };
+                  if(code == 'sg'){
+                    return '23424948'
+                  };
+                  if(code == 'za'){
+                    return '23424942'
+                  };    
+                  if(code == 'kr'){
+                    return '23424868'
+                  };
+                  if(code == 'es'){
+                    return '23424950'
+                  };
+                  if(code == 'se'){
+                    return '23424954'
+                  };
+                  if(code == 'ch'){
+                    return '23424957'
+                  };
+                  if(code == 'tw'){
+                    return '23424971'
+                  };
+                  if(code == 'th'){
+                    return '23424960'
+                  };
+                  if(code == 'tr'){
+                    return '23424969'
+                  };
+                  if(code == 'ua'){
+                    return '23424976'
+                  };
+                  if(code == 'uk'){
+                    return '23424975'
+                  };
+                  if(code == 'vn'){
+                    return '23424984'
+                  };
+  };
 
 
         var loadVideos = function() {
@@ -1379,16 +1509,29 @@ jQuery('#vmap').vectorMap({
         }
 
        var loadTweets= function(){
-            $.get('/tweets').done(function(tweets){
-              console.log(tweets)
+            $('#twitterSearchResults').empty();
+            var twitterCountryCode = findTwitterCountryCode(code);
+            $.ajax('/tweets',{
+              type: 'GET',
+              dataType: 'json',
+              data: {twitterCountryCode : twitterCountryCode},
+            }).done(function(tweets){
+              var content  = '<table width=100%>'
+              for(i=0; i<10; i++){
+                var number = i + 1;   
+                var name = tweets[0].trends[i].name;
+                var url = tweets[0].trends[i].url
+                content += '<tr><td class="numberColumn col-sm-4">' +  number + '</td><td class="col-sm-9 twitterResultCells">' + '<a href="' + url + '">' + name + '</a></td></tr>'
+              }
+              $('#twitterSearchResults').append(content);
             });
         };
-        loadTweets();
-
-            // googleSearch();
-            // loadMovies();
-            // loadSongs();
-            // loadVideos();
+            
+            loadVideos();
+            googleSearch();
+            loadMovies();
+            loadSongs();
+            loadTweets();
 
         // if ($('#youtubeTab').hasClass('active')){
         //     loadVideos();
