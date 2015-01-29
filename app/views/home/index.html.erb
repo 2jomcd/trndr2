@@ -14,13 +14,11 @@
 <body>
 
 
-<div id="vmap" style="width: 96.9%; height: 400px; border-radius: 10px; margin: 0 auto; margin-top: 15px">
-<!-- 	<div id="logo"><%= image_tag "logocyansmall.PNG" %></div> -->
-
-	<div id="selectedCountryDiv"></div>
-</div>
-<hr>
-<div id="searchDiv">
+	<div id="vmap" style="width: 96.9%; height: 400px; border-radius: 10px; margin: 0 auto; margin-top: 15px">
+		<div id="selectedCountryDiv"></div>
+	</div>
+	<hr>
+	<div id="searchDiv">
 
         <div class="">
             <ul id="myTab" class="nav nav-pills nav-stacked col-sm-2">
@@ -34,38 +32,37 @@
 
 	        <div id="myTabContent" class="tab-content col-sm-10">
 
-	              <div class="tab-pane fade active in" id="youtube">
-		            <div class="searchResults" id="youtubeSearchResults">
-		            </div>
-	              </div>
+				<div class="tab-pane fade active in" id="youtube">
+				  <div class="searchResults" id="youtubeSearchResults">No results available/Select a country</div>
+				</div>
 
+				<div class="tab-pane fade col-sm-12" id="iTunes">
+				  <div class="searchResults" id="iTunesSearchResults">No results available/Select another country</div> 
+				</div>
 
-	              <div class="tab-pane fade col-sm-12" id="iTunes">
-	                <div class="searchResults" id="iTunesSearchResults"></div> 
-	              </div>
+				<div class="tab-pane fade in" id="google">
+					<div class="searchResults" id="googleSearchResults">
+						<div class="col-sm-2"></div>
+						<div id="country_trends"></div>
+						<iframe id="googleSearches" scrolling="no" style="border:none;" width="70%" height="413" src="http://www.google.com/trends/hottrends/widget?pn=p1&amp;tn=10&amp;h=413"></iframe>
+					</div> 
+				</div>
 
-	              <div class="tab-pane fade in" id="google">
-	              	<div class="searchResults" id="googleSearchResults"><div class="col-sm-2"></div>
-        			<div id="country_trends"></div>
-          		        <iframe id="googleSearches" scrolling="no" style="border:none;" width="70%" height="413" src="http://www.google.com/trends/hottrends/widget?pn=p1&amp;tn=10&amp;h=413"></iframe>
-	              	</div> 
-	              </div>
+				<div class="tab-pane fade in" id="twitter">
+				  	<div class="searchResults" id="twitterSearchResults">No results available/Select another country</div> 
+				</div>
 
-	              <div class="tab-pane fade in" id="twitter">
-	              	<div class="searchResults" id="twitterSearchResults"></div> 
-	              </div>
+				<div class="tab-pane fade in" id="boxOffice">
+					<div class="searchResults" id="boxOfficeSearchResults">No results available/Select another country</div>
+				</div>
 
-					<div class="tab-pane fade in" id="boxOffice">
-						<div class="searchResults" id="boxOfficeSearchResults"></div>
-					</div>
+				<div class="tab-pane fade in" id="favorites">
+					<div class="searchResults" id="favorites"></div>
+				</div>
 
-					<div class="tab-pane fade in" id="favorites">
-						<div class="searchResults" id="favorites"></div>
-					</div>
+			</div>
 		</div>
 	</div>
-
-</div>
 
 <script>
 	$('#myTab a').click(function (e) {
