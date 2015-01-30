@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150128201411) do
     t.string   "site"
     t.string   "img"
     t.string   "prevw"
+    t.string   "actors"
   end
 
   create_table "users", force: :cascade do |t|

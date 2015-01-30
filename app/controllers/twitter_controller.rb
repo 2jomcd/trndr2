@@ -12,8 +12,7 @@ class TwitterController < ApplicationController
 
         tweets = client.get(url)
 
-        render json: tweets
 
-	end
+	 end
 
 end

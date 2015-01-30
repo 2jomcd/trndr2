@@ -1127,8 +1127,6 @@ jQuery('#vmap').vectorMap({
         $('#selectedCountryDiv').text(region);
 
 
-        //google
-
         var googleSearch = function(){
 
                 //read selected country from select dropdown
@@ -1423,8 +1421,6 @@ jQuery('#vmap').vectorMap({
         var loadVideos = function() {
             $('#youtubeSearchResults').empty();
 
-
-
             var apiURL ="https://gdata.youtube.com/feeds/api/standardfeeds/" + countryCode + "/most_popular";
 
             $.get(apiURL, function(data) {
@@ -1439,7 +1435,7 @@ jQuery('#vmap').vectorMap({
                     var vidId= noTag[noTag.length - 1];
                     var number= i+1;
                     content += '<tr><td class="numberColumn col-sm-3">' +  number + '</td><td class="col-sm-4"><iframe title="YouTube video player" src="http://www.youtube.com/embed/' + vidId + '" width="430" height="305" frameborder="0" allowfullscreen="1"></iframe></td><td class="col-sm-4">'
-+ '<button class="favoriteButtons"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button></td></tr>' 
++ '<button class="favoriteButtons" url="http://www.youtube.com/embed/' + vidId + '" kind="youtube"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button></td></tr>' 
                   };
             $('#youtubeSearchResults').append(content);
             });
@@ -1468,7 +1464,7 @@ jQuery('#vmap').vectorMap({
                  var genre= countryOne['category'].attributes.label;
                  var preview= countryOne['link'][1].attributes.href;
                   content += '<tr><td class="numberColumn col-sm-1">' +  number + '</td><td class="col-sm-2"><img src=' + imgUrl + '></td><td class="col-sm-3">' + "<strong>" + titleAndArtist + "</strong><br>" + album + "&nbsp&nbsp ~ &nbsp&nbsp" + genre +
-                 '</td><td class="col-sm-3">' + '<audio controls="" autostart="0" name="media" source src=' + preview + ' type="audio/mp4"></audio>' + '</td><td class="col-sm-2"><button class="favoriteButtons"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button></td></tr>' 
+                 '</td><td class="col-sm-3">' + '<audio controls="" autostart="0" name="media" source src=' + preview + ' type="audio/mp4"></audio>' + '</td><td class="col-sm-2"><button class="favoriteButtons" kind="iTunes" title="' + titleAndArtist + '" imgLink=' + imgUrl + ' preview=' + preview + '><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button></td></tr>' 
                 }
                    $('#iTunesSearchResults').append(content);
             });
@@ -1501,7 +1497,7 @@ jQuery('#vmap').vectorMap({
                     var critics= movies[i].ratings.critics_score;
                     var rating = movies[i].mpaa_rating; 
                     console.log(movies[i]);
-                    content += '<tr><td class="numberColumn col-sm-1">' +  number + '</td><td class="col-sm-2"><img width="100px" src=' + imgUrl + '></td><td class="col-sm-3"><strong>' + title + '</strong><br><div class="movieInfo">' + actors[0] + "&nbsp" + actors[1] + "&nbsp" + actors[2] + "&nbsp"  + actors[3] + "&nbsp"  + actors[4] + '<br><br>Rated: ' + rating + '<br>Runtime: ' + runtime + ' min<br>audience rating: ' + audience + '<br>critic rating: ' + critics + '</div><button class="favoriteButtons boxOfficeFavoriteButtons"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button>' + '</td><td class="col-sm-5"><div class="synopsisDivs">' + synopsis  + '</div></td></tr>'               
+                    content += '<tr><td class="numberColumn col-sm-1">' +  number + '</td><td class="col-sm-2"><img width="100px" src=' + imgUrl + '></td><td class="col-sm-3"><strong>' + title + '</strong><br><div class="movieInfo">' + actors[0] + "&nbsp" + actors[1] + "&nbsp" + actors[2] + "&nbsp"  + actors[3] + "&nbsp"  + actors[4] + '<br><br>Rated: ' + rating + '<br>Runtime: ' + runtime + ' min<br>audience rating: ' + audience + '<br>critic rating: ' + critics + '</div><button class="favoriteButtons boxOfficeFavoriteButtons" kind="boxOffice" title="' + title + '" imgLink="' + imgUrl + '"actors="' + actors[0] + ", " + actors[1] + ", " + actors[2] + ", "  + actors[3] + ", and "  + actors[4] + '"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button>' + '</td><td class="col-sm-5"><div class="synopsisDivs">' + synopsis  + '</div></td></tr>'               
                   }
                   $('#boxOfficeSearchResults').append(content);
                 }
@@ -1532,33 +1528,139 @@ jQuery('#vmap').vectorMap({
             loadMovies();
             loadSongs();
             loadTweets();
-
-        // if ($('#youtubeTab').hasClass('active')){
-        //     loadVideos();
-        // }
-
-
-        // if ($('#iTunesTab').hasClass('active')){
-        //     loadSongs();
-        // }
-
-        // if ($('#boxOfficeTab').hasClass('active')){
-        //     loadMovies();
-        // }
-        // if ($('#googleTab').hasClass('active')){
-        //     googleSearch();
-        // }
     }
 });
 
-// jQuery('#vmap').vectorMap(
-// {
-//     onRegionClick: function(event, code)
-//     {
-//         console.log(this);
-//         $(this).attr('background-color', "green")
-//     },
-// });
+// On page load
+
+$(document).ready(function(){
+
+$('.searchResults').on('click', '.favoriteButtons', function(){
+  
+
+  var site = 'undefined';
+  var title = 'undefined';
+  var prevw = 'undefined';
+  var img = 'undefined';
+  var kind = 'undefined';
+  var actors = 'undefined';
+  var country = ($('#selectedCountryDiv').text());
+  var artist = 'undefined'
 
 
-// 
+  if($(this).attr('url')){
+    var site = ($(this).attr('url'));
+  };
+
+  
+  if($(this).attr('title')){
+    var title = ($(this).attr('title'));
+  };
+
+  if($(this).attr('preview')){ 
+    var prevw = ($(this).attr('preview'));
+  };
+
+  if($(this).attr('imgLink')){
+    var img = ($(this).attr('imgLink'));
+  };
+
+  if($(this).attr('kind')){
+    var kind = ($(this).attr('kind'));
+  };
+ 
+  if ($(this).attr('actors')){
+    var actors = ($(this).attr('actors'));
+  };
+
+  $(this.firstChild).css('color', 'purple');
+
+  $.ajax('/media', {
+      type: 'POST',
+      dataType: 'json',
+      data: {title : title, artist : artist, prevw : prevw, img : img, site : site, kind : kind, actors : actors},
+  }).done(function(response){
+    var mediaId = response
+    $.ajax('/favorites', {
+      type: 'POST',
+      dataType: 'json',
+      data: { country: country, mediaId: mediaId }
+    }).done(function(){
+      loadFavorites();
+    });
+  });
+});
+
+
+loadFavorites();
+
+  // setTimeout(populateFavorites(), 10000);
+  // setTimeout(function(){
+  // alert(favoriteArray);
+
+});
+
+
+// Function & Variable Definitions
+
+window.favoriteArray= [];
+
+var loadFavorites= function(){
+  $.ajax('/favorites', {
+    type: 'GET',
+    dataType: 'json'
+  }).done(function(response){
+    console.log("response: ", response);
+    var favorites = response;
+    var ajaxRequests = [];
+    for (i=0; i<favorites.length; i++){
+      var media_id = favorites[i].media_id;
+      var request = $.ajax( '/media', {
+        type: 'GET',
+        dataType: 'json',
+        data: { media_id: media_id }
+      });
+      ajaxRequests.push(request);
+    }
+    $.when.apply(undefined, ajaxRequests).then(function(data) {
+      $.each(arguments, function (idx, args) {
+        window.favoriteArray.push(args[0]);
+      })
+      populateFavorites();
+    });
+
+    // for (i=0; i<favorites.length; i++){
+    //   console.log("iterating times ", i);
+    //   var media_id = favorites[i].media_id;
+    //   // console.log(media_id);
+    //   $.ajax('/media', {
+    //     type: 'GET',
+    //     dataType: 'json',
+    //     data: { media_id: media_id }
+    //   }).done(function(data){
+    //     var fav = data;
+    //     window.favoriteArray.push(fav);
+    //   });
+    // };
+    // console.log("FAVS", window.favoriteArray)
+  });
+};
+
+var populateFavorites= function(){
+      $('#favoritesDiv').empty();
+      var content  = '<table width=100%>'
+      for(i=0; i<favoriteArray.length; i++){
+        if (favoriteArray[i].kind == 'iTunes'){
+           content += '<tr><td class="col-sm-3"><img src=' + favoriteArray[i].img + '></td><td class="col-sm-4">' + "<strong>" + favoriteArray[i].title + '</strong></td><td class="col-sm-3">' + '<audio controls="" autostart="0" name="media" source src=' + favoriteArray[i].prevw + ' type="audio/mp4"></audio>' + '</td></tr>'
+          }
+        if (favoriteArray[i].kind == 'youtube'){
+          content += '<tr><td class="col-sm-4"><iframe title="YouTube video player" src="' + favoriteArray[i].site + '" width="430" height="305" frameborder="0" allowfullscreen="1"></iframe></td></tr>'
+          }
+        if (favoriteArray[i].kind == 'boxOffice'){
+           content += '<tr><td class="col-sm-2"><img width="100px" src=' + favoriteArray[i].img+ '></td><td class="col-sm-3"><strong>' + favoriteArray[i].title + '</strong><br>' + favoriteArray[i].actors + '</td></tr>'
+          }
+      }
+  $('#favoritesDiv').append(content);
+};
+
+
