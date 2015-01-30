@@ -36,12 +36,17 @@ gem 'figaro'
 gem 'bootstrap-sass'
 
 gem "sinatra"
+
 gem "json"
+
 gem "twitter"
+
 gem "haml"
 
 gem 'pry'
 gem 'pg'
+
+gem "pg"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
