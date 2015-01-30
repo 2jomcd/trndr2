@@ -13,44 +13,11 @@
 </head>
 <body>
 
-<!-- Begin Navbar -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		    </button>
-		</div>
-    	<!-- Collect the nav links, forms, and other content for toggling -->
-    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    		<ul class="nav navbar-nav navbar-left">
-    			<li><%= image_tag "logocyansmall.PNG" %></li>
-    		</ul>
-      		<ul class="nav navbar-nav navbar-right">
-      			<% if user_signed_in? %>
-      				<li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
-  					<li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
-				<% else %>
-  					<li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %></li>
-  					<li><%= link_to "Login", new_user_session_path, :class => 'navbar-link' %></li>
-				<% end %>
-			</ul>
-		</div><!-- /.navbar-collapse -->
-  	</div><!-- /.container-fluid -->
-</nav>
-<!-- End Navbar -->
-
-
-<div id="vmap" style="width: 96.9%; height: 400px; border-radius: 10px; margin: 0 auto; margin-top: 15px">
-<!-- 	<div id="logo"><%= image_tag "logocyansmall.PNG" %></div> -->
-
-	<div id="selectedCountryDiv"></div>
-</div>
-<hr>
-<div id="searchDiv">
+	<div id="vmap" style="width: 96.9%; height: 400px; border-radius: 10px; margin: 0 auto; margin-top: 15px">
+		<div id="selectedCountryDiv"></div>
+	</div>
+	<hr>
+	<div id="searchDiv">
 
         <div class="">
             <ul id="myTab" class="nav nav-pills nav-stacked col-sm-2">
@@ -64,38 +31,36 @@
 
 	        <div id="myTabContent" class="tab-content col-sm-10">
 
-	              <div class="tab-pane fade active in" id="youtube">
-		            <div class="searchResults" id="youtubeSearchResults">
-		            </div>
-	              </div>
+				<div class="tab-pane fade active in" id="youtube">
+				  <div class="searchResults" id="youtubeSearchResults">No results available/Select a country</div>
+				</div>
 
+				<div class="tab-pane fade col-sm-12" id="iTunes">
+				  <div class="searchResults" id="iTunesSearchResults">No results available/Select another country</div> 
+				</div>
 
-	              <div class="tab-pane fade col-sm-12" id="iTunes">
-	                <div class="searchResults" id="iTunesSearchResults"></div> 
-	              </div>
+				<div class="tab-pane fade in" id="google">
+					<div class="searchResults" id="googleSearchResults">
+						<div class="col-sm-2"></div>
+						<div id="country_trends"></div>
+						<iframe id="googleSearches" scrolling="no" style="border:none;" width="70%" height="413" src="http://www.google.com/trends/hottrends/widget?pn=p1&amp;tn=10&amp;h=413"></iframe>
+					</div> 
+				</div>
 
-	              <div class="tab-pane fade in" id="google">
-	              	<div class="searchResults" id="googleSearchResults"><div class="col-sm-2"></div>
-        			<div id="country_trends"></div>
-          		        <iframe id="googleSearches" scrolling="no" style="border:none;" width="70%" height="413" src="http://www.google.com/trends/hottrends/widget?pn=p1&amp;tn=10&amp;h=413"></iframe>
-	              	</div> 
-	              </div>
+				<div class="tab-pane fade in" id="twitter">
+				  	<div class="searchResults" id="twitterSearchResults">No results available/Select another country</div> 
+				</div>
 
-	              <div class="tab-pane fade in" id="twitter">
-	              	<div class="searchResults" id="twitterSearchResults"></div> 
-	              </div>
-
-					<div class="tab-pane fade in" id="boxOffice">
-						<div class="searchResults" id="boxOfficeSearchResults"></div>
-					</div>
-
-					<div class="tab-pane fade in" id="favorites">
+				<div class="tab-pane fade in" id="boxOffice">
+					<div class="searchResults" id="boxOfficeSearchResults">No results available/Select another country</div>
+				</div>
+				
+				<div class="tab-pane fade in" id="favorites">
 						<div class="searchResults" id="favoritesDiv"></div>
-					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-
-</div>
 
 <script>
 	$('#myTab a').click(function (e) {
@@ -114,64 +79,6 @@
 <!-- <div id="element-example-tooltip" style="display:none">This element is moved into the tooltip</div>
     --> 
 
-<style>
-.numberColumn{
-	font-size: 50px;
-	text-align: left;
-}
-
-.favoriteButtons{
-	background: transparent;
-	border: none;
-}
-
-.glyphicon-star{
-	font-size: 50px;
-}
-
-.glyphicon-star:hover{
-	color:purple;
-}
-
-
-.synopsisDivs{
-	height: 120px;
-	overflow-y: scroll;
-	border-top: solid 3px hsl(270,0%,95%);
-    border-right: solid 3px hsl(270,0%,85%);
-	border-left: solid 3px hsl(270,0%,90%);
-	border-bottom: solid 3px hsl(270,0%,77%);
-}
-
-tr{
-/*	border-top: solid 3px hsl(0,0%,60%);*/
-	border-bottom: solid 3px hsl(0,0%,90%);
-}
-
-.boxOfficeFavoriteButtons{
-/*	position: absolute; 
-	z-index: 10;*/
-	margin-left: -80px;
-	margin-top: 60px;
-/*	float: right;
-*/}
-
-.movieInfo{
-	text-align: left;
-	position: relative;
-	float: left;
-}
-
-.twitterResultCells{
-	font-size: 25px;
-/*	width: 80%;*/
-	text-align: left;
-}
-
-hr { display: block; height: 2px;
-    border: 0; border-top: 3px solid hsl(0,0%,15%);
-    margin: 1em 0; padding: 0; }
-</style>
 
 
 </body>

@@ -1603,9 +1603,9 @@ loadFavorites();
 
 // Function & Variable Definitions
 
-window.favoriteArray= [];
 
-var loadFavorites= function(){
+loadFavorites= function(){
+  window.favoriteArray= [];
   $.ajax('/favorites', {
     type: 'GET',
     dataType: 'json'
@@ -1657,7 +1657,7 @@ var populateFavorites= function(){
           content += '<tr><td class="col-sm-4"><iframe title="YouTube video player" src="' + favoriteArray[i].site + '" width="430" height="305" frameborder="0" allowfullscreen="1"></iframe></td></tr>'
           }
         if (favoriteArray[i].kind == 'boxOffice'){
-           content += '<tr><td class="col-sm-2"><img width="100px" src=' + favoriteArray[i].img+ '></td><td class="col-sm-3"><strong>' + favoriteArray[i].title + '</strong><br>' + favoriteArray[i].actors + '</td></tr>'
+           content += '<tr><td class="col-sm-2"><img width="100px" src=' + favoriteArray[i].img+ '></td><td class="col-sm-3"><strong>' + favoriteArray[i].title + '</strong><br>' + favoriteArray[i].artist + '</td></tr>'
           }
       }
   $('#favoritesDiv').append(content);

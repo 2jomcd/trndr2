@@ -8,7 +8,7 @@ class MediaController < ApplicationController
   	  img =  params[:img]
   	  prevw =  params[:prevw]
   	  actors =  params[:actors]
-  	  Medium.create(title: title, artist: artist, kind: kind, site: site, img: img, prevw: prevw, actors: actors)
+  	  Medium.create(title: title, artist: actors, kind: kind, site: site, img: img, prevw: prevw)
   	  render json: Medium.last.id
   end
 

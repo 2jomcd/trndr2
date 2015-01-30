@@ -8,7 +8,7 @@ class FavoritesController < ApplicationController
 
   def index
   	current_user_id = User.find(current_user).id
-  	@favorites = Favorite.where (user_id = current_user_id)
+  	@favorites = Favorite.where(user_id: current_user_id)
   	render json: @favorites
   end
 end

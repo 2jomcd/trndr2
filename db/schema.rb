@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150128201411) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "favorites", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "media_id"
@@ -30,7 +33,6 @@ ActiveRecord::Schema.define(version: 20150128201411) do
     t.string   "site"
     t.string   "img"
     t.string   "prevw"
-    t.string   "actors"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150128201411) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
