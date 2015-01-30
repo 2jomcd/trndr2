@@ -5,7 +5,7 @@ gem 'devise', '~> 3.4.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -35,18 +35,15 @@ gem 'figaro'
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass'
 
-gem "sinatra"
+gem 'sinatra'
 
-gem "json"
+gem 'json'
 
-gem "twitter"
+gem 'twitter'
 
-gem "haml"
+gem 'haml'
 
 gem 'pry'
-gem 'pg'
-
-gem "pg"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -68,5 +65,13 @@ group :test do
 	gem 'shoulda-matchers', require: true
   gem 'capybara'
   gem 'launchy'
+  gem 'sqlite3'
 end
 
+group :production do
+    # Heroku uses Postgres in production
+  gem 'pg'
+
+  # This gem will make Heroku serve your assets (CSS, JS, etc)
+  gem 'rails_12factor'
+end
