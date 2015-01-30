@@ -1510,7 +1510,7 @@ jQuery('#vmap').vectorMap({
             $.ajax('/tweets',{
               type: 'GET',
               dataType: 'json',
-              data: {twitterCountryCode : twitterCountryCode},
+              data: {twitter_country_code : twitterCountryCode},
             }).done(function(tweets){
               var content  = '<table width=100%>'
               for(i=0; i<10; i++){
