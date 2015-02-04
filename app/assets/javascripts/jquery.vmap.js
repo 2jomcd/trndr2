@@ -1434,12 +1434,16 @@ jQuery('#vmap').vectorMap({
                     var noTag= $(withTag).text().split('/');
                     var vidId= noTag[noTag.length - 1];
                     var number= i+1;
-                    content += '<tr><td class="numberColumn col-sm-3">' +  number + '</td><td class="col-sm-4"><iframe title="YouTube video player" src="http://www.youtube.com/embed/' + vidId + '" width="430" height="305" frameborder="0" allowfullscreen="1"></iframe></td><td class="col-sm-4">'
+                    content += '<tr><td class="numberColumn col-sm-3">' +  number + '</td><td class="col-sm-4"><iframe class="lazy" title="YouTube video player" src="http://www.youtube.com/embed/' + vidId + '" width="430" height="305" frameborder="0" allowfullscreen="1"></iframe></td><td class="col-sm-4">'
 + '<button class="favoriteButtons" url="http://www.youtube.com/embed/' + vidId + '" kind="youtube"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button></td></tr>' 
                   };
             $('#youtubeSearchResults').append(content);
             });
         };
+
+        $(".lazy").lazyload({
+          container: $("#youtubeSearchResults")
+        });
 // '<td>' + number + '</td><td><iframe title="YouTube video player" src="http://www.youtube.com/embed/' + vidId + '" width="430" height="305" frameborder="0" allowfullscreen="1"></iframe></td>'
 
         var loadSongs = function() {
