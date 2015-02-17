@@ -9,7 +9,7 @@ Media covered include: music, videos, movies, search terms, and tweets.
 Countries covered:  Trendr has every continent well represented but not every country.
 
 The project was built in Rails with an Angular front end as a group project with my homies 
-from General Assembly, San francisco, Web Development Immersive, in early 2015.
+from General Assembly, San Francisco, Web Development Immersive, in early 2015.
 
 I contributed to the overall database schema, most back end tests, user model 
 and favorites models, and installed authentication and authorization structures.
