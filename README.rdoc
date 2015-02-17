@@ -1,21 +1,24 @@
 == Trendr
 
-Ever wonder what the top 10 pop songs are in Italy? How about the most popular youTube video in Japan? 
-Trendr has the answers. Travel the Globe and see the top, trending media in every country. 
+Ever wonder what the top 10 pop songs are in Italy? How about the most popular youTube videos in Japan? 
+Trendr has the answers. Travel the Globe and see the top, trending media in many countries. 
 
 Media covered include: music, videos, movies, search terms, and tweets.
 
-The project was built in Rails with an Angular front end with my homies 
-from General Assembly, Web Development Immersive in early 2015.
+Countries covered:  Trendr has every continent well represented but not every country.
 
-I contributed the overall database schema, most back end tests, user model 
+The project was built in Rails with an Angular front end as a group project with my homies 
+from General Assembly, San francisco, Web Development Immersive, in early 2015.
+
+I contributed to the overall database schema, most back end tests, user model 
 and favorites models, and installed authentication and authorization structures.
 
 The real heavy lifting, of course, was integrating the various APIs in the front end.
-My GA buddy, Paul G.  (  ) did most of that.
+My GA buddy, Paul Gaudin,  (https://github.com/polyg314) did most of that.
 
 To see Trendr in action, visit:  https://worldtrend.herokuapp.com/
 
-If nothign seems to be working looka at your browser's address bar.  
+If nothing seems to be working look at your browser's address bar.  
 See any strange warnings or icons?  Your browser may be blocking some scripts do to security concerns.
-It will ask permission to runs cripts on the site.  Say yes - there's nothing dangerous going on.
+
+If so, it will ask permission to runs scripts from the site.  Say yes - there's nothing dangerous going on.
