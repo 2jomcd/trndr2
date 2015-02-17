@@ -1,28 +1,21 @@
-== README
+== Trendr
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ever wonder what the top 10 pop songs are in Italy? How about the most popular youTube video in Japan? 
+Trendr has the answers. Travel the Globe and see the top, trending media in every country. 
 
-Things you may want to cover:
+Media covered include: music, videos, movies, search terms, and tweets.
 
-* Ruby version
+The project was built in Rails with an Angular front end with my homies 
+from General Assembly, Web Development Immersive in early 2015.
 
-* System dependencies
+I contributed the overall database schema, most back end tests, user model 
+and favorites models, and installed authentication and authorization structures.
 
-* Configuration
+The real heavy lifting, of course, was integrating the various APIs in the front end.
+My GA buddy, Paul G.  (  ) did most of that.
 
-* Database creation
+To see Trendr in action, visit:  https://worldtrend.herokuapp.com/
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+If nothign seems to be working looka at your browser's address bar.  
+See any strange warnings or icons?  Your browser may be blocking some scripts do to security concerns.
+It will ask permission to runs cripts on the site.  Say yes - there's nothing dangerous going on.
