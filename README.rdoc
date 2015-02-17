@@ -18,7 +18,7 @@ My GA buddy, Paul Gaudin,  (https://github.com/polyg314) did most of that.
 
 To see Trendr in action, visit:  https://worldtrend.herokuapp.com/
 
-If nothing seems to be working look at your browser's address bar.  
-See any strange warnings or icons?  Your browser may be blocking some scripts do to security concerns.
+If nothing seems to be working be aware of warnings, or icons in your address bar.  
+Your browser may be blocking some scripts due to security concerns.
 
 If so, it will ask permission to runs scripts from the site.  Say yes - there's nothing dangerous going on.
