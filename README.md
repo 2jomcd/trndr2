@@ -1,4 +1,4 @@
-== Trendr
+#Trendr
 
 Travel the Globe and see the top, trending media in many countries. 
 
