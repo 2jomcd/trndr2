@@ -15,7 +15,7 @@ I contributed to the overall database schema, most back end tests, user model
 and favorites models, and installed authentication and authorization structures.
 
 The real heavy lifting, of course, was integrating the various APIs in the front end.
-My GA buddy, Paul Gaudin,  (https://github.com/polyg314) did most of that.
+My GA buddy, [Paul Gaudin](https://github.com/polyg314) did most of that.
 
 To see Trendr in action, visit:  https://worldtrend.herokuapp.com/
 
