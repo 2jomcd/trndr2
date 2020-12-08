@@ -1,6 +1,6 @@
-#Trendr
+# Trendr
 
-Travel the Globe and see the top, trending media in many countries. 
+### Travel the Globe and see the top, trending media in many countries. 
 
 Ever wonder what the top 10 pop songs are in Italy? How about the most popular youTube videos in Japan? 
 Trendr has the answers. 
